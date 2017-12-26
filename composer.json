@@ -12,24 +12,35 @@
             "homepage": "http://github.com/claroline"
         }
     ],
+    "repositories": [
+        {
+            "type" : "vcs",
+            "url" : "https://github.com/djerrah/migrations.git"
+        }
+    ],
     "require": {
         "php": ">=5.5",
         "symfony/framework-bundle": "*",
-        "symfony/console": "~2.0",
-        "symfony/twig-bridge": "~2.0",
-        "symfony/twig-bundle": "~2.0",
-        "doctrine/orm": "~2.2",
-        "doctrine/migrations": "~1.3",
-        "jdorn/sql-formatter": "~1.0",
-        "psr/log": "~1.0",
+        "symfony/console": "@stable",
+        "symfony/twig-bridge": "@stable",
+        "symfony/twig-bundle": "@stable",
+        "doctrine/orm": "@stable",
+        "doctrine/migrations": "dev-develop",
+        "jdorn/sql-formatter": "@stable",
+        "psr/log": "@stable",
         "claroline/kernel-bundle": "~6.0"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev",
-        "mikey179/vfsStream": "dev-master"
+        "mockery/mockery": "~1.0",
+        "mikey179/vfsStream": "~1.6"
     },
     "autoload": {
         "psr-4": { "Claroline\\MigrationBundle\\": "" }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

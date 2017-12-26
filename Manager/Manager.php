@@ -61,15 +61,15 @@ class Manager
         if (!$output) $output = $bundle;
 
         foreach ($platforms as $driverName => $platform) {
-            $queries = $this->generator->generateMigrationQueries($bundle, $platform);
+            $queries = ($driverName !== 'pdo_pgsql') ? $this->generator->generateMigrationQueries($bundle, $platform) : [];
 
-            if (count($queries[Generator::QUERIES_UP]) > 0 || count($queries[Generator::QUERIES_DOWN]) > 0) {
+            #if (count($queries[Generator::QUERIES_UP]) > 0 || count($queries[Generator::QUERIES_DOWN]) > 0) {
                 $this->log(" - Generating migration class for {$driverName} driver...");
                 $this->writer->writeMigrationClass($output, $driverName, $version, $queries);
-            } else {
-                $this->log('Nothing to generate: database and mapping are synced');
-                break;
-            }
+            #} else {
+            #    $this->log('Nothing to generate: database and mapping are synced');
+            #    break;
+            #}
         }
     }
 
@@ -158,10 +158,13 @@ class Manager
         return $platforms;
     }
 
+    /**
+     * @return array
+     */
     private function getSupportedDrivers()
     {
         return array(
-            'pdo_mysql' => 'Doctrine\DBAL\Driver\PDOMySql\Driver'
+            'pdo_pgsql' => 'Doctrine\DBAL\Driver\PDOPgSql\Driver'
         );
     }
 

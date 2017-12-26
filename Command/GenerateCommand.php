@@ -41,6 +41,10 @@ EOT
             );
     }
 
+    /**
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->getManager($output)->generateBundleMigration($this->getTargetBundle($input), $this->getOutputBundle($input));

@@ -59,6 +59,7 @@ class Generator
         $this->filterSchemas(array($fromSchema, $toSchema), $bundleTables);
 
         $upQueries = $fromSchema->getMigrateToSql($toSchema, $platform);
+
         $downQueries = $fromSchema->getMigrateFromSql($toSchema, $platform);
 
         return array(

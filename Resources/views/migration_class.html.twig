@@ -13,6 +13,36 @@ use Doctrine\DBAL\Schema\Schema;
  */
 class {{ class }} extends AbstractMigration
 {
+
+   /**
+    * RELEASE
+    */
+    const VERSION = {{ version }};
+
+   /**
+    * Get RELEASE name
+    */
+    public function getName()
+    {
+        return self::VERSION;
+    }
+
+   /**
+    * Get Description
+    */
+    public function getDescription()
+    {
+        return '';
+    }
+
+   /**
+    * Get UserName
+    */
+    public function getUserName()
+    {
+        return '';
+    }
+
     public function up(Schema $schema)
     {
 {{ statementBlock(upQueries) }}    }

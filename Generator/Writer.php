@@ -74,8 +74,9 @@ class Writer
             array(
                 'namespace' => $namespace,
                 'class' => $class,
-                'upQueries' => $queries[Generator::QUERIES_UP],
-                'downQueries' => $queries[Generator::QUERIES_DOWN]
+                'version' => $version,
+                'upQueries' => isset($queries[Generator::QUERIES_UP])? $queries[Generator::QUERIES_UP] : [],
+                'downQueries' => isset($queries[Generator::QUERIES_DOWN])? $queries[Generator::QUERIES_DOWN] : []
             )
         );
 
